@@ -1,0 +1,37 @@
+# Project: Minesweeper
+# Makefile created by Embarcadero Dev-C++ 6.3
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o graphics.o logic.o game.o
+LINKOBJ  = main.o graphics.o logic.o game.o
+LIBS     = -L"C:/mingw64/lib" -L"C:/mingw64/x86_64-w64-mingw32/lib" -L"C:/Users/Admin/Hao/LTNC/SDL2-2.28.5/x86_64-w64-mingw32/lib" -L"C:/Users/Admin/Hao/LTNC/SDL2_image-2.8.2/x86_64-w64-mingw32/lib" -L"C:/Users/Admin/Hao/LTNC/SDL2_ttf-2.24.0/x86_64-w64-mingw32/lib" -static-libgcc -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf
+INCS     = -I"C:/mingw64/include" -I"C:/mingw64/x86_64-w64-mingw32/include" -I"C:/mingw64/lib/gcc/x86_64-w64-mingw32/12.1.0/include"
+CXXINCS  = -I"C:/mingw64/include" -I"C:/mingw64/x86_64-w64-mingw32/include" -I"C:/mingw64/lib/gcc/x86_64-w64-mingw32/12.1.0/include" -I"C:/Users/Admin/Hao/LTNC/SDL2-2.28.5/x86_64-w64-mingw32/include/SDL2" -I"C:/Users/Admin/Hao/LTNC/SDL2_image-2.8.2/x86_64-w64-mingw32/include/SDL2" -I"C:/Users/Admin/Hao/LTNC/SDL2_ttf-2.24.0/x86_64-w64-mingw32/include/SDL2"
+BIN      = Minesweeper.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+DEL      = C:\Program Files (x86)\Embarcadero\Dev-Cpp\devcpp.exe INTERNAL_DEL
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${DEL} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+graphics.o: graphics.cpp
+	$(CPP) -c graphics.cpp -o graphics.o $(CXXFLAGS)
+
+logic.o: logic.cpp
+	$(CPP) -c logic.cpp -o logic.o $(CXXFLAGS)
+
+game.o: game.cpp
+	$(CPP) -c game.cpp -o game.o $(CXXFLAGS)
